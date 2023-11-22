@@ -160,20 +160,53 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.  </h1>
+        <h1 class="title">4. Write a Java program to print the sum, multiply, subtract, divide and remainder of two numbers </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
-            <pre>class one{
-    public static void main(String[] args) {
-        System.out.println(&quot;Hello World&quot;);
-    }
-}</pre>
+            <pre> class ArithmeticOperations
+              {
+              int num1 = 60, num2 = 20;
+              void sum()
+              {
+              int sum;
+              sum = num1 + num2;
+              System.out.println("Sum of two numbers is : " + sum);
+              }
+              void division()
+              {
+              int division;
+              division = num1 / num2;
+              System.out.println("Division of two numbers is : " + division);
+              }
+              void multiply()
+              {
+              int multiply;
+              multiply = num1 * num2;
+              System.out.println("Multiplication of two numbers is : " + multiply);
+              }
+              void subtract()
+              {
+              int subtract;
+              subtract = num1 - num2;
+              System.out.println("Subtraction of two numbers is : " + subtract);
+              }
+              public static void main(String args[])
+              {
+              ArithmeticOperations obj = new ArithmeticOperations();
+              System.out.println("First Number is : " + obj.num1);
+              System.out.println("Second Number is : " + obj.num2);
+              obj.sum();
+              obj.division();
+              obj.multiply();
+              obj.subtract();
+              }
+              }</pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="#" alt="output" />
+          <img src="bc4.png" alt="output" />
         </div>      </section>
   
 </main>
