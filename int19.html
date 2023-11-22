@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://sgbrothers.github.io/javawebsite/inheritance/inheritance19.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://sgbrothers.github.io/javawebsite/images/small.png" type="image/x-icon">
+    <link rel="stylesheet" href="./int19_files/style2.css">
+    <title>Code - Output</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="navconatiner">
+                <nav>
+                    <ul id="navlist">
+                        <li>
+                            <p><a>CODEWEB</a></p>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="https://sgbrothers.github.io/javawebsite/index.html" target="_blank">HOME</a>
+                                <a href="https://sgbrothers.github.io/javawebsite/php/introduction.html" target="_blank">PHP</a>
+                                <a href="https://sgbrothers.github.io/javawebsite/inheritance/inheritance19.html#one">CONTACT</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="display">
+                <div class="example">
+                    <div class="head">
+                        <h2>CODE</h2>
+                    </div>
+                 <p>
+                    abstract class Employee {<br>
+                        public abstract void calculateSalary();<br>
+                      <br>
+                         public abstract  void displayInfo() ;<br>
+                      }<br>
+                      <br>
+                      class Manager extends Employee {<br>
+                          public void calculateSalary() {<br>
+                              System.out.println("your salary is : 60,0000/-");<br>
+                          }<br>
+                          public void displayInfo() {<br>
+                              System.out.println("name: Gaurav");<br>
+                              System.out.println("Dept: IT");<br>
+                              System.out.println("Designation: Manager");<br>
+                          }<br>
+                      }<br>
+                      <br>
+                      class Programmer extends Employee {<br>
+                          <br>
+                          public void calculateSalary() {<br>
+                              System.out.println("your salary is : 80,000/-");<br>
+                          }<br>
+                          public void displayInfo() {<br>
+                              System.out.println("name: yash");<br>
+                              System.out.println("Dept: IT");<br>
+                              System.out.println("Designation: Programmer");<br>
+                          }<br>
+                      }<br>
+                      class M {<br>
+                          public static void main(String[] args) {<br>
+                              Manager manager = new Manager();<br>
+                              Programmer programmer = new Programmer();<br>
+                      <br>
+                              manager.displayInfo();<br>
+                              manager.calculateSalary();<br>
+                              programmer.displayInfo();<br>
+                              programmer.calculateSalary();<br>
+                          }<br>
+                      }<br>
+                      
+                 </p>
+                </div>
+                <div class="output">
+                    <div class="head">
+                        <h2>OUTPUT</h2>
+                    </div>
+                    <div class="image">
+                        <p>
+                            <img src="./int19_files/pro19.png" alt="image" loading="lazy">
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="foot" id="one">
+                <div class="Copyright">
+                    <p>Copyright © CodeWeb 2023 All rights are Reserved </p>
+                </div>
+                <div class="contact">
+                    <div class="linkedin">
+                        <div class="left">
+                            <img src="./int19_files/linkedin.jpg" alt="linkedin_image" loading="lazy">
+                        </div>
+                        <div class="right">
+                            <p><a href="https://www.linkedin.com/in/sourav-kumar-61362821a/" target="_blank">LinkedIn</a></p>
+                        </div>
+                    </div>
+                    <div class="linkedin">
+                        <div class="left">
+                            <img src="./int19_files/gmail.png" alt="Gmail_image" loading="lazy">
+                        </div>
+                        <div class="right">
+                            <p><a href="mailto:sk2856150@gmail.com" target="_blank">Email</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    </div></body></html>
