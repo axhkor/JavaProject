@@ -165,22 +165,49 @@ transform: scale(1.1);
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
             <pre>
-              package com.example;
+              // Package declaration
+              package pack1;
               
-              public class MyPackage {
-                  public String publicString = "This is a public string";
-                  public int publicInt = 42;
+              // Public class with public members
+              public class Package10 {
               
-                  public void display() {
-                      System.out.println("Public method in MyPackage class");
-                  }
+              public String name;
+              public int age;
+              
+              public Package10(String name, int age) {
+              this.name = name;
+              this.age = age;
+              }
+              
+              public void printPublicInfo() {
+              System.out.println("Public Information:");
+              System.out.println("Name: " + name);
+              System.out.println("Age: " + age);
+              }
+              }
+              // Class that accesses the public members of ParentClass
+              class ChildClass {
+              
+              public static void main(String arr[]) {
+              // Create an instance of ParentClass
+              Package10 parentClass = new Package10("John Doe", 30);
+              
+              // Access public members of ParentClass
+              System.out.println("Accessing public information from ChildClass:");
+              System.out.println("Name: " + parentClass.name);
+              System.out.println("Age: " + parentClass.age);
+              
+              // Call the public method of ParentClass
+              System.out.println("\nCalling public method from ChildClass:");
+              parentClass.printPublicInfo();
+              }
               }
               </pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="" alt="output" />
+          <img src="pkg.jpg" alt="output" />
         </div>      </section>
   
 </main>
