@@ -160,20 +160,46 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.  </h1>
+        <h1 class="title">1. Write a Java program to create a class called "Person" with a name and age attribute. Create two instances of the "Person" class, set their attributes using the constructor, and print their name and age. </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
-            <pre>class one{
-    public static void main(String[] args) {
-        System.out.println(&quot;Hello World&quot;);
-    }
-}</pre>
+            <pre> class Person {
+              private String name;
+              private int age;
+              
+              // Constructor
+              public Person(String name, int age) {
+              this.name = name;
+              this.age = age;
+              }
+              
+              // Getter methods
+              public String getName() {
+              return name;
+              }
+              
+              public int getAge() {
+              return age;
+              }
+              }
+              
+              public class pro1 {
+              public static void main(String[] args) {
+              // Creating two instances of the Person class
+              Person person1 = new Person("Alice", 25);
+              Person person2 = new Person("Bob", 30);
+              
+              // Printing their name and age
+              System.out.println("Person 1 - Name: " + person1.getName() + ", Age: " + person1.getAge());
+              System.out.println("Person 2 - Name: " + person2.getName() + ", Age: " + person2.getAge());
+              }
+              }</pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="#" alt="output" />
+          <img src="oop1.png" alt="output" />
         </div>      </section>
   
 </main>

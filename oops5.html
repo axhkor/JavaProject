@@ -125,7 +125,7 @@ transform: scale(1.1);
           <li class="navigation">
           <!--  <a href="#about">About</a>
             <a href="#contact">Contact</a> -->
-            <a href="oopslist.html">
+            <a href="inputoutputlist.html">
 
               <svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
                 <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
@@ -148,7 +148,7 @@ transform: scale(1.1);
         </ul>
       </nav>
     </header>
-
+             
     <!-- Container Section -->
     
       <div class="courseCont">
@@ -160,65 +160,95 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.Write a Java program to create a class called "Dog" with a name and breed attribute. Create two instances of the "Dog" class, set their attributes using the constructor and modify the attributes using the setter methods and print the updated values.  </h1>
+        <h1 class="title">5.Write a Java program to create a class called "Book" with attributes for title, author, and ISBN, and methods to add and remove books from a collection.  </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
-            <pre> class Dog {
-              private String name;
-              private String breed;
+            <pre>class Book {
+              private String title;
+              private String author;
+              private String isbn;
               
               // Constructor
-              public Dog(String name, String breed) {
-              this.name = name;
-              this.breed = breed;
+              public Book(String title, String author, String isbn) {
+              this.title = title;
+              this.author = author;
+              this.isbn = isbn;
               }
               
               // Getter methods
-              public String getName() {
-              return name;
+              public String getTitle() {
+              return title;
               }
               
-              public String getBreed() {
-              return breed;
+              public String getAuthor() {
+              return author;
               }
               
-              // Setter methods
-              public void setName(String name) {
-              this.name = name;
-              }
-              
-              public void setBreed(String breed) {
-              this.breed = breed;
+              public String getIsbn() {
+              return isbn;
               }
               }
               
-              class pro2 {
+              class BookCollection {
+              private static final int MAX_BOOKS = 100; // Maximum number of books in the collection
+              private Book[] books;
+              private int numBooks;
+              
+              // Constructor
+              public BookCollection() {
+              books = new Book[MAX_BOOKS];
+              numBooks = 0;
+              }
+              
+              // Method to add a book to the collection
+              public void addBook(Book book) {
+              if (numBooks < MAX_BOOKS) {
+              books[numBooks] = book;
+              numBooks++;
+              System.out.println("Book added: " + book.getTitle());
+              } else {
+              System.out.println("Cannot add more books. Collection is full.");
+              }
+              }
+              
+              // Method to remove a book from the collection
+              public void removeBook(String isbn) {
+              for (int i = 0; i < numBooks; i++) {
+              if (books[i].getIsbn().equals(isbn)) {
+              System.out.println("Book removed: " + books[i].getTitle());
+              // Shift books to fill the gap
+              for (int j = i; j < numBooks - 1; j++) {
+              books[j] = books[j + 1];
+              }
+              books[numBooks - 1] = null;
+              numBooks--;
+              return;
+              }
+              }
+              System.out.println("Book with ISBN " + isbn + " not found.");
+              }
+              }
+              
+              public class pro5 {
               public static void main(String[] args) {
-              // Creating two instances of the Dog class
-              Dog dog1 = new Dog("Buddy", "Labrador");
-              Dog dog2 = new Dog("Max", "German Shepherd");
+              // Creating a BookCollection
+              BookCollection myBooks = new BookCollection();
               
-              // Printing initial values
-              System.out.println("Initial Values:");
-              System.out.println("Dog 1 - Name: " + dog1.getName() + ", Breed: " + dog1.getBreed());
-              System.out.println("Dog 2 - Name: " + dog2.getName() + ", Breed: " + dog2.getBreed());
+              // Adding books
+              myBooks.addBook(new Book("The Catcher in the Rye", "J.D. Salinger", "9780316769488"));
+              myBooks.addBook(new Book("To Kill a Mockingbird", "Harper Lee", "9780061120084"));
+              myBooks.addBook(new Book("1984", "George Orwell", "9780451524935"));
               
-              // Modifying attributes using setter methods
-              dog1.setName("Charlie");
-              dog2.setBreed("Golden Retriever");
-              
-              // Printing updated values
-              System.out.println("\nUpdated Values:");
-              System.out.println("Dog 1 - Name: " + dog1.getName() + ", Breed: " + dog1.getBreed());
-              System.out.println("Dog 2 - Name: " + dog2.getName() + ", Breed: " + dog2.getBreed());
+              // Removing a book
+              myBooks.removeBook("9780061120084");
               }
-              }</pre>
+              } </pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="oop2.png" alt="output" />
+          <img src="oop5.png" alt="output" />
         </div>      </section>
   
 </main>

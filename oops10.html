@@ -125,7 +125,7 @@ transform: scale(1.1);
           <li class="navigation">
           <!--  <a href="#about">About</a>
             <a href="#contact">Contact</a> -->
-            <a href="oopslist.html">
+            <a href="inputoutputlist.html">
 
               <svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
                 <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
@@ -160,65 +160,109 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.Write a Java program to create a class called "Dog" with a name and breed attribute. Create two instances of the "Dog" class, set their attributes using the constructor and modify the attributes using the setter methods and print the updated values.  </h1>
+        <h1 class="title">10.Write a Java program to create a class called "Student" with a name, grade, and courses attributes, and methods to add and remove courses.   </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
-            <pre> class Dog {
-              private String name;
-              private String breed;
+            <pre>
+                class Student {
+                    private String name;
+                    private int grade;
+                    private String[] courses;
+                    private int numCourses;
+                    
+                    // Constructor
+                    public Student(String name, int grade) {
+                    this.name = name;
+                    this.grade = grade;
+                    this.courses = new String[10]; // Assuming maximum 10 courses
+                    this.numCourses = 0;
+                    }
+                    
+                    // Method to add a course
+                    public void addCourse(String course) {
+                    if (numCourses < courses.length) {
+                    courses[numCourses] = course;
+                    numCourses++;
+                    System.out.println("Course added: " + course);
+                    } else {
+                    System.out.println("Cannot add more courses. Maximum courses reached.");
+                    }
+                    }
+                    
+                    // Method to remove a course
+                    public void removeCourse(String course) {
+                    boolean found = false;
+                    for (int i = 0; i < numCourses; i++) {
+                    if (courses[i].equals(course)) {
+                    found = true;
+                    System.out.println("Course removed: " + course);
+                    // Shift courses to fill the gap
+                    for (int j = i; j < numCourses - 1; j++) {
+                    courses[j] = courses[j + 1];
+                    }
+                    courses[numCourses - 1] = null;
+                    numCourses--;
+                    break;
+                    }
+                    }
+                    if (!found) {
+                    System.out.println("Course not found: " + course);
+                    }
+                    }
+                    
+                    // Getter methods
+                    public String getName() {
+                    return name;
+                    }
+                    
+                    public int getGrade() {
+                    return grade;
+                    }
+                    
+                    public String[] getCourses() {
+                    return courses;
+                    }
+                    
+                    public int getNumCourses() {
+                    return numCourses;
+                    }
+                    }
+                    
+                    public class pro10 {
+                    public static void main(String[] args) {
+                    // Creating a Student instance
+                    Student student = new Student("Alice", 10);
+                    
+                    // Adding courses
+                    student.addCourse("Math");
+                    student.addCourse("Science");
+                    student.addCourse("History");
+                    
+                    // Displaying courses
+                    System.out.println("Courses for " + student.getName() + " (Grade " + student.getGrade() + "):");
+                    String[] courses = student.getCourses();
+                    for (int i = 0; i < student.getNumCourses(); i++) {
+                    System.out.println("- " + courses[i]);
+                    }
+                    
+                    // Removing a course
+                    student.removeCourse("Science");
+                    
+                    // Displaying courses after removal System.out.println("\nCourses after removal:");
+                    courses = student.getCourses();
+                    for (int i = 0; i < student.getNumCourses(); i++) {
+                    System.out.println("- " + courses[i]);
+                    }
+                    }
+                    }
               
-              // Constructor
-              public Dog(String name, String breed) {
-              this.name = name;
-              this.breed = breed;
-              }
-              
-              // Getter methods
-              public String getName() {
-              return name;
-              }
-              
-              public String getBreed() {
-              return breed;
-              }
-              
-              // Setter methods
-              public void setName(String name) {
-              this.name = name;
-              }
-              
-              public void setBreed(String breed) {
-              this.breed = breed;
-              }
-              }
-              
-              class pro2 {
-              public static void main(String[] args) {
-              // Creating two instances of the Dog class
-              Dog dog1 = new Dog("Buddy", "Labrador");
-              Dog dog2 = new Dog("Max", "German Shepherd");
-              
-              // Printing initial values
-              System.out.println("Initial Values:");
-              System.out.println("Dog 1 - Name: " + dog1.getName() + ", Breed: " + dog1.getBreed());
-              System.out.println("Dog 2 - Name: " + dog2.getName() + ", Breed: " + dog2.getBreed());
-              
-              // Modifying attributes using setter methods
-              dog1.setName("Charlie");
-              dog2.setBreed("Golden Retriever");
-              
-              // Printing updated values
-              System.out.println("\nUpdated Values:");
-              System.out.println("Dog 1 - Name: " + dog1.getName() + ", Breed: " + dog1.getBreed());
-              System.out.println("Dog 2 - Name: " + dog2.getName() + ", Breed: " + dog2.getBreed());
-              }
-              }</pre>
+             </pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="oop2.png" alt="output" />
+          <img src="oop10.png" alt="output" />
         </div>      </section>
   
 </main>
