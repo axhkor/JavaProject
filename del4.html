@@ -159,7 +159,7 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.Java Program to Create Text Area and Password Field
+        <h1 class="title">4.Java Program to Create 2 Radio Buttons and Display Selected Button Label
         </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
@@ -168,46 +168,54 @@ transform: scale(1.1);
                 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-class Login implements ActionListener
+class Radio_Button implements ActionListener
 {
-static JTextField name;
-static JPasswordField pswd;
-static JButton view;
+static JRadioButton yes;
+static JRadioButton no;
 static JTextField text;
+
 public static void main(String args[])
 {
-JFrame frame=new JFrame("Login");
-frame.setSize(500,400);
+//Create a frame
+JFrame frame=new JFrame("Radio Button");
+frame.setSize(500,500);
 frame.setLayout(null);
 frame.setBackground(Color.white);
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-JLabel l_name=new JLabel("Name :");
-JLabel l_pswd=new JLabel("Password :");
-l_name.setBounds(50,50,50,50);
-l_pswd.setBounds(20,100,80,50);
-frame.add(l_name);
-frame.add(l_pswd);
-name=new JTextField();
-pswd=new JPasswordField();
-name.setBounds(100,50,250,50)
-; pswd.setBounds(100,100,250,50);
-frame.add(name);
-frame.add(pswd);
-view=new JButton("View");
-view.setBounds(150,200,100,50);
-frame.add(view);
+
 text=new JTextField();
-text.setBounds(0,250,400,50);
+text.setBounds(0,0,500,50);
 frame.add(text);
-Login obj=new Login();
-view.addActionListener(obj);
+
+yes=new JRadioButton("Yes");
+no=new JRadioButton("No");
+yes.setBounds(210,100,80,60);
+no.setBounds(210,200,80,60);
+frame.add(yes);
+frame.add(no);
+
+Radio_Button obj=new Radio_Button();
+
+yes.addActionListener(obj);
+no.addActionListener(obj);
+//Display the frame
 frame.setVisible(true);
 }
+
 public void actionPerformed(ActionEvent e)
 {
-String pass=String.valueOf(pswd.getPassword());
-text.setText("Username = "+name.getText());
-text.setText(text.getText()+" Password = "+pass);
+String b=e.getActionCommand();
+if(b.equals("Yes"))
+{
+if(no.isSelected())
+no.setSelected(false);
+}
+else
+{
+if(yes.isSelected())
+yes.setSelected(false);
+}
+text.setText("Label of Button Selected : "+b);
 }
 }
                </pre>
@@ -215,7 +223,7 @@ text.setText(text.getText()+" Password = "+pass);
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="del2.png" alt="output" />
+          <img src="del4.png" alt="output" />
         </div>      </section>
   
 </main>

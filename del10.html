@@ -159,63 +159,54 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.Java Program to Create Text Area and Password Field
+        <h1 class="title">10. Java Program to Create and Set Border to Push Buttons
         </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
             <pre> 
                 import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.*;
-class Login implements ActionListener
-{
-static JTextField name;
-static JPasswordField pswd;
-static JButton view;
-static JTextField text;
-public static void main(String args[])
-{
-JFrame frame=new JFrame("Login");
-frame.setSize(500,400);
-frame.setLayout(null);
-frame.setBackground(Color.white);
+
+class ButtonBorderExample {
+
+public static void main(String[] args) {
+SwingUtilities.invokeLater(new Runnable() {
+@Override
+public void run() {
+createAndShowGUI();
+}
+});
+}
+
+private static void createAndShowGUI() {
+JFrame frame = new JFrame("Button Border Example");
+frame.setSize(400, 300);
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-JLabel l_name=new JLabel("Name :");
-JLabel l_pswd=new JLabel("Password :");
-l_name.setBounds(50,50,50,50);
-l_pswd.setBounds(20,100,80,50);
-frame.add(l_name);
-frame.add(l_pswd);
-name=new JTextField();
-pswd=new JPasswordField();
-name.setBounds(100,50,250,50)
-; pswd.setBounds(100,100,250,50);
-frame.add(name);
-frame.add(pswd);
-view=new JButton("View");
-view.setBounds(150,200,100,50);
-frame.add(view);
-text=new JTextField();
-text.setBounds(0,250,400,50);
-frame.add(text);
-Login obj=new Login();
-view.addActionListener(obj);
+
+// Create buttons with different borders
+JButton button1 = new JButton("Button 1");
+button1.setBorder(BorderFactory.createLineBorder(Color.BLUE)); // Blue line border
+
+JButton button2 = new JButton("Button 2");
+button2.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED)); // Raised etched border
+
+// Set layout and add buttons to the frame
+frame.setLayout(new FlowLayout());
+frame.add(button1);
+frame.add(button2);
+
 frame.setVisible(true);
 }
-public void actionPerformed(ActionEvent e)
-{
-String pass=String.valueOf(pswd.getPassword());
-text.setText("Username = "+name.getText());
-text.setText(text.getText()+" Password = "+pass);
 }
-}
+
                </pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="del2.png" alt="output" />
+          <img src="del10.png" alt="output" />
         </div>      </section>
   
 </main>

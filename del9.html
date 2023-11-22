@@ -159,7 +159,7 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.Java Program to Create Text Area and Password Field
+        <h1 class="title">9.Java Program to Create and Switch between Frames using Buttons
         </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
@@ -167,47 +167,60 @@ transform: scale(1.1);
             <pre> 
                 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-class Login implements ActionListener
-{
-static JTextField name;
-static JPasswordField pswd;
-static JButton view;
-static JTextField text;
-public static void main(String args[])
-{
-JFrame frame=new JFrame("Login");
-frame.setSize(500,400);
-frame.setLayout(null);
-frame.setBackground(Color.white);
-frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-JLabel l_name=new JLabel("Name :");
-JLabel l_pswd=new JLabel("Password :");
-l_name.setBounds(50,50,50,50);
-l_pswd.setBounds(20,100,80,50);
-frame.add(l_name);
-frame.add(l_pswd);
-name=new JTextField();
-pswd=new JPasswordField();
-name.setBounds(100,50,250,50)
-; pswd.setBounds(100,100,250,50);
-frame.add(name);
-frame.add(pswd);
-view=new JButton("View");
-view.setBounds(150,200,100,50);
-frame.add(view);
-text=new JTextField();
-text.setBounds(0,250,400,50);
-frame.add(text);
-Login obj=new Login();
-view.addActionListener(obj);
-frame.setVisible(true);
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class SwitchFrame {
+
+public static void main(String[] args) {
+createAndShowGUI();
 }
-public void actionPerformed(ActionEvent e)
-{
-String pass=String.valueOf(pswd.getPassword());
-text.setText("Username = "+name.getText());
-text.setText(text.getText()+" Password = "+pass);
+
+private static void createAndShowGUI() {
+// Create the first frame
+final JFrame frame1 = new JFrame("Frame 1");
+frame1.setSize(300, 200);
+frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+final JFrame frame2 = new JFrame("Frame 2");
+frame2.setSize(300, 200);
+frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+JButton switchButton1 = new JButton("Switch to Frame 2");
+switchButton1.addActionListener(new ActionListener() {
+@Override
+public void actionPerformed(ActionEvent e) {
+// Switch to Frame 2
+frame1.setVisible(false);
+frame2.setVisible(true);
+}
+});
+
+frame1.setLayout(new FlowLayout());
+frame1.add(new JLabel("This is Frame 1"));
+frame1.add(switchButton1);
+
+// Create the second frame
+
+JButton switchButton2 = new JButton("Switch to Frame 1");
+switchButton2.addActionListener(new ActionListener() {
+@Override
+public void actionPerformed(ActionEvent e) {
+// Switch to Frame 1
+frame2.setVisible(false);
+frame1.setVisible(true);
+}
+});
+
+frame2.setLayout(new FlowLayout());
+frame2.add(new JLabel("This is Frame 2"));
+frame2.add(switchButton2);
+
+// Initially, set Frame 2 to be invisible
+frame2.setVisible(false);
+
+// Show the first frame
+frame1.setVisible(true);
 }
 }
                </pre>
@@ -215,7 +228,7 @@ text.setText(text.getText()+" Password = "+pass);
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="del2.png" alt="output" />
+          <img src="del9.png" alt="output" />
         </div>      </section>
   
 </main>

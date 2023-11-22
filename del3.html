@@ -159,7 +159,7 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.Java Program to Create Text Area and Password Field
+        <h1 class="title">3.Java Program to Create a Button and Display Image in the Frame when Clicked
         </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
@@ -168,46 +168,31 @@ transform: scale(1.1);
                 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-class Login implements ActionListener
-{
-static JTextField name;
-static JPasswordField pswd;
-static JButton view;
-static JTextField text;
-public static void main(String args[])
-{
-JFrame frame=new JFrame("Login");
-frame.setSize(500,400);
-frame.setLayout(null);
-frame.setBackground(Color.white);
+
+class event {
+static JFrame frame;
+
+public static void main(String[] args) {
+frame = new JFrame("Button Image");
+frame.setSize(500, 500);
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-JLabel l_name=new JLabel("Name :");
-JLabel l_pswd=new JLabel("Password :");
-l_name.setBounds(50,50,50,50);
-l_pswd.setBounds(20,100,80,50);
-frame.add(l_name);
-frame.add(l_pswd);
-name=new JTextField();
-pswd=new JPasswordField();
-name.setBounds(100,50,250,50)
-; pswd.setBounds(100,100,250,50);
-frame.add(name);
-frame.add(pswd);
-view=new JButton("View");
-view.setBounds(150,200,100,50);
-frame.add(view);
-text=new JTextField();
-text.setBounds(0,250,400,50);
-frame.add(text);
-Login obj=new Login();
-view.addActionListener(obj);
-frame.setVisible(true);
+frame.getContentPane().setBackground(Color.white);
+frame.setLayout(new FlowLayout());
+
+JButton button = new JButton("Display");
+frame.add(button);
+
+button.addActionListener(new ActionListener() {
+public void actionPerformed(ActionEvent e) {
+ImageIcon icon = new ImageIcon("blob3.png");
+JLabel label = new JLabel(icon);
+frame.add(label);
+frame.pack();
+frame.setSize(500, 500);
 }
-public void actionPerformed(ActionEvent e)
-{
-String pass=String.valueOf(pswd.getPassword());
-text.setText("Username = "+name.getText());
-text.setText(text.getText()+" Password = "+pass);
+});
+
+frame.setVisible(true);
 }
 }
                </pre>
@@ -215,7 +200,7 @@ text.setText(text.getText()+" Password = "+pass);
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="del2.png" alt="output" />
+          <img src="del3.png" alt="output" />
         </div>      </section>
   
 </main>

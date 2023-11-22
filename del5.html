@@ -159,55 +159,63 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.Java Program to Create Text Area and Password Field
+        <h1 class="title">5.Java Program to Handle KeyBoardEvent
         </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
             <pre> 
-                import javax.swing.*;
-import java.awt.*;
+                import java.awt.*;
 import java.awt.event.*;
-class Login implements ActionListener
-{
-static JTextField name;
-static JPasswordField pswd;
-static JButton view;
-static JTextField text;
-public static void main(String args[])
-{
-JFrame frame=new JFrame("Login");
-frame.setSize(500,400);
+
+class Main implements KeyListener {
+static Frame frame;
+static TextField tf1;
+static TextField tf2;
+
+// Driver function
+public static void main(String args[]) {
+frame = new Frame("Keyboard Event");
+frame.setSize(500, 500);
 frame.setLayout(null);
-frame.setBackground(Color.white);
-frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-JLabel l_name=new JLabel("Name :");
-JLabel l_pswd=new JLabel("Password :");
-l_name.setBounds(50,50,50,50);
-l_pswd.setBounds(20,100,80,50);
-frame.add(l_name);
-frame.add(l_pswd);
-name=new JTextField();
-pswd=new JPasswordField();
-name.setBounds(100,50,250,50)
-; pswd.setBounds(100,100,250,50);
-frame.add(name);
-frame.add(pswd);
-view=new JButton("View");
-view.setBounds(150,200,100,50);
-frame.add(view);
-text=new JTextField();
-text.setBounds(0,250,400,50);
-frame.add(text);
-Login obj=new Login();
-view.addActionListener(obj);
-frame.setVisible(true);
+
+tf1 = new TextField();
+tf1.setBounds(150, 100, 500, 50);
+
+tf2 = new TextField();
+tf2.setBounds(140, 400, 500, 50);
+
+Main obj = new Main();
+
+tf2.addKeyListener(obj);
+frame.addWindowListener(new WindowAdapter() {
+public void windowClosing(WindowEvent w) {
+frame.dispose();
 }
-public void actionPerformed(ActionEvent e)
-{
-String pass=String.valueOf(pswd.getPassword());
-text.setText("Username = "+name.getText());
-text.setText(text.getText()+" Password = "+pass);
+});
+frame.setVisible(true);
+frame.add(tf1);
+frame.add(tf2);
+}
+
+public void keyReleased(KeyEvent e) {
+tf1.setText("");
+tf1.setText("Key Typed : " + e.getKeyChar());
+System.out.println("Key Released");
+}
+
+// function to display the unicode of key pressed and the character if it is a letter or a digit
+public void keyPressed(KeyEvent e) {
+tf1.setText("");
+tf1.setText("Key Typed : " + e.getKeyChar());
+System.out.println("Key Pressed");
+}
+
+// function to display the character of the key typed
+public void keyTyped(KeyEvent e) {
+tf1.setText("");
+tf1.setText("Key Typed : " + e.getKeyChar());
+System.out.println("Key Typed");
 }
 }
                </pre>
@@ -215,7 +223,7 @@ text.setText(text.getText()+" Password = "+pass);
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="del2.png" alt="output" />
+          <img src="del5.png" alt="output" />
         </div>      </section>
   
 </main>
