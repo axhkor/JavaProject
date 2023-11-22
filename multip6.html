@@ -113,7 +113,8 @@ transform: scale(1.1);
     </h1></div>
   </div>
     <!-- Navbar -->
-   
+     
+            
     <header>
       <nav>
         <ul>
@@ -126,7 +127,7 @@ transform: scale(1.1);
           <li class="navigation">
           <!--  <a href="#about">About</a>
             <a href="#contact">Contact</a> -->
-            <a href="inputoutputlist.html">
+            <a href="multithreadinglist.html">
 
               <svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
                 <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
@@ -149,7 +150,6 @@ transform: scale(1.1);
         </ul>
       </nav>
     </header>
-
     <!-- Container Section -->
     
       <div class="courseCont">
@@ -161,20 +161,128 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.  </h1>
+        <h1 class="title">6.Write a Java program to implement a concurrent web crawler that crawls multiple websites simultaneously using threads. </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
-            <pre>class one{
-    public static void main(String[] args) {
-        System.out.println(&quot;Hello World&quot;);
-    }
-}</pre>
+            <pre> class MyThread extends Thread {
+                private int start, end;
+                private int sum = 0;
+                
+                MyThread(int start, int end) {
+                this.start = start;
+                this.end = end;
+                }
+                
+                public void run() {
+                System.out.println("My thread is running");
+                for (int i = start; i <= end; i++) {
+                if (isPrime(i))
+                sum += i;
+                }
+                }
+                
+                boolean isPrime(int n) {
+                if (n == 0 || n == 1)
+                return false;
+                for (int i = 2; i <= Math.sqrt(n); ++i) {
+                if (n % i == 0)
+                return false;
+                }
+                return true;
+                }
+                
+                public int getSum() {
+                return sum;
+                }
+                }
+                
+                // Write a Java program to implement a concurrent web crawler that crawls multiple websites simultaneously using threads.
+                
+                import java.util.HashSet;
+                import java.util.Set;
+                import java.util.concurrent.ExecutorService;
+                import java.util.concurrent.Executors;
+                
+                class Main {
+                private static final int MAX_DEPTH = 2; // Maximum depth for crawling
+                private static final int THREAD_POOL_SIZE = 5; // Number of threads
+                
+                private Set< String > visitedUrls = new HashSet< String >();
+                private ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+                
+                public void startCrawling(String startUrl, int currentDepth) {
+                if (currentDepth > MAX_DEPTH || visitedUrls.contains(startUrl)) {
+                return;
+                }
+                
+                visitedUrls.add(startUrl);
+                executorService.execute(new WebPageCrawler(startUrl, currentDepth));
+                }
+                
+                public void shutdown() {
+                executorService.shutdown();
+                }
+                
+                private class WebPageCrawler implements Runnable {
+                private String url;
+                private int depth;
+                
+                public WebPageCrawler(String url, int depth) {
+                this.url = url;
+                this.depth = depth;
+                }
+                
+                @Override
+                public void run() {
+                System.out.println("Crawling " + url + " at depth " + depth);
+                // Implement your web crawling logic here
+                
+                // For demonstration purposes, let's assume a simple delay
+                try {
+                Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                e.printStackTrace();
+                }
+                
+                // Fetch links from the web page and start crawling each link
+                Set links = getLinksFromPage(url);
+                for (String link : links) {
+                startCrawling(link, depth + 1);
+                }
+                }
+                
+                private Set getLinksFromPage(String url) {
+                // Implement logic to fetch links from the web page
+                // This could involve using a library like Jsoup or HttpClient
+                
+                // For demonstration purposes, returning a dummy set of links
+                Set dummyLinks = new HashSet();
+                dummyLinks.add("https://google.com/link1");
+                dummyLinks.add("https://google.com/link2");
+                return dummyLinks;
+                }
+                }
+                
+                public static void main(String[] args) {
+                Main webCrawler = new Main();
+                webCrawler.startCrawling("https://google.com", 0);
+                
+                // Allow some time for crawling
+                try {
+                Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                e.printStackTrace();
+                }
+                
+                webCrawler.shutdown();
+                }
+                } </pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="#" alt="output" />
+          <img src="mul6.jpg" alt="output" />
         </div>      </section>
   
 </main>

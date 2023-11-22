@@ -126,7 +126,7 @@ transform: scale(1.1);
           <li class="navigation">
           <!--  <a href="#about">About</a>
             <a href="#contact">Contact</a> -->
-            <a href="inputoutputlist.html">
+            <a href="multithreadinglist.html">
 
               <svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
                 <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
@@ -161,20 +161,104 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.  </h1>
+        <h1 class="title">3.Write a Java program that sorts an array of integers using multiple threads.  </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
-            <pre>class one{
-    public static void main(String[] args) {
-        System.out.println(&quot;Hello World&quot;);
-    }
-}</pre>
+            <pre>import java.util.Arrays;
+
+              class program3 {
+              private static final int ARRAY_SIZE = 400;
+              private static final int NUM_THREADS = 4;
+              
+              public static void main(String[] args) {
+              int[] array = createArray();
+              System.out.println("Before sorting: " + Arrays.toString(array));
+              
+              Thread[] threads = new Thread[NUM_THREADS];
+              int segmentSize = ARRAY_SIZE / NUM_THREADS;
+              
+              for (int i = 0; i < NUM_THREADS; i++) {
+              int startIndex = i * segmentSize; int endIndex = (i == NUM_THREADS - 1) ? ARRAY_SIZE - 1 : (startIndex + segmentSize - 1);
+              threads[i] = new Thread(new SortTask(array, startIndex, endIndex));
+              threads[i].start();
+              }
+              
+              for (Thread thread: threads) {
+              try {
+              thread.join();
+              } catch (InterruptedException e) {
+              e.printStackTrace();
+              }
+              }
+              
+              mergeSort(array, 0, ARRAY_SIZE - 1);
+              
+              System.out.println("After sorting: " + Arrays.toString(array));
+              }
+              
+              private static int[] createArray() {
+              int[] array = new int[ARRAY_SIZE];
+              for (int i = 0; i < ARRAY_SIZE; i++) {
+              array[i] = (int)(Math.random() * 400); // Generate random numbers between 0 and 400
+              }
+              return array;
+              }
+              
+              private static void mergeSort(int[] array, int left, int right) {
+              if (left < right) {
+              int mid = (left + right) / 2;
+              mergeSort(array, left, mid);
+              mergeSort(array, mid + 1, right);
+              merge(array, left, mid, right);
+              }
+              }
+              
+              private static void merge(int[] array, int left, int mid, int right) {
+              int[] temp = new int[right - left + 1];
+              int i = left, j = mid + 1, k = 0;
+              
+              while (i <= mid && j <= right) {
+              if (array[i] <= array[j]) {
+              temp[k++] = array[i++];
+              } else {
+              temp[k++] = array[j++];
+              }
+              }
+              
+              while (i <= mid) {
+              temp[k++] = array[i++];
+              }
+              
+              while (j <= right) {
+              temp[k++] = array[j++];
+              }
+              
+              System.arraycopy(temp, 0, array, left, temp.length);
+              }
+              
+              static class SortTask implements Runnable {
+              private int[] array;
+              private int startIndex;
+              private int endIndex;
+              
+              public SortTask(int[] array, int startIndex, int endIndex) {
+              this.array = array;
+              this.startIndex = startIndex;
+              this.endIndex = endIndex;
+              }
+              
+              @Override
+              public void run() {
+              Arrays.sort(array, startIndex, endIndex + 1);
+              }
+              }
+              } </pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="#" alt="output" />
+          <img src="mul3.png" alt="output" />
         </div>      </section>
   
 </main>

@@ -161,29 +161,44 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">1.Write a Java program to create a basic Java thread that prints "Hello, World!" when executed.  </h1>
+        <h1 class="title">10. Create the program to create multiple threads, set its name and its priority. </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
-            <pre> class sampleThread extends Thread{
-              public void run(){
-              System.out.println("hello world");
-              }
-              }
-              
-              
-              public class program1{
-              public static void main(String[] args) {
-              sampleThread foo = new sampleThread();
-              foo.run();
-              
-              }
-              }</pre>
+            <pre> class program10 implements Runnable {
+                private final int threadId;
+                
+                public program10(int id) {
+                this.threadId = id;
+                }
+                
+                public void run() {
+                System.out.println("Thread " + threadId + " is running.");
+                }
+                
+                public static void main(String[] args) {
+                int numThreads = 5; // Number of threads to create
+                
+                // Create and start multiple threads
+                for (int i = 1; i <= numThreads; i++) {
+                program10 example = new program10(i);
+                Thread thread = new Thread(example);
+                
+                // Set the thread name
+                thread.setName("MyThread-" + i);
+                
+                // Set the thread priority (1 to 10, 1 being the lowest priority and 10 being the highest)
+                thread.setPriority(Thread.MIN_PRIORITY + i);
+                
+                thread.start();
+                }
+                }
+                } </pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="mul1.png" alt="output" />
+          <img src="mul10.png" alt="output" />
         </div>      </section>
   
 </main>

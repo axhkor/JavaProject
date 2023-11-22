@@ -113,6 +113,8 @@ transform: scale(1.1);
     </h1></div>
   </div>
     <!-- Navbar -->
+     
+            
     <header>
       <nav>
         <ul>
@@ -125,7 +127,7 @@ transform: scale(1.1);
           <li class="navigation">
           <!--  <a href="#about">About</a>
             <a href="#contact">Contact</a> -->
-            <a href="inputoutputlist.html">
+            <a href="multithreadinglist.html">
 
               <svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
                 <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
@@ -148,7 +150,6 @@ transform: scale(1.1);
         </ul>
       </nav>
     </header>
-
     <!-- Container Section -->
     
       <div class="courseCont">
@@ -160,20 +161,37 @@ transform: scale(1.1);
 
 <main style="background-color: white;">
     <section class="content1"style="background-color: white;"> 
-        <h1 class="title">2.  </h1>
+        <h1 class="title"> 9.Create the program to create multiple threads by using Thread class </h1>
         <div class="codeblock">
           <p class="codetitle"><span style='font-size:34px;'>&#128161;</span>Code:</p>
           <div class="code">
-            <pre>class one{
-    public static void main(String[] args) {
-        System.out.println(&quot;Hello World&quot;);
-    }
-}</pre>
+            <pre> class program9 extends Thread {
+                private final int threadId;
+                
+                public program9(int id) {
+                this.threadId = id;
+                }
+                
+                public void run() {
+                System.out.println("Thread " + threadId + " is running.");
+                }
+                
+                public static void main(String[] args) {
+                int numThreads = 5; // Number of threads to create
+                
+                // Create and start multiple threads
+                for (int i = 1; i <= numThreads; i++) {
+                program9 thread = new program9(i);
+                thread.start();
+                }
+                }
+                }
+                 </pre>
           </div>
         </div>
         <div class="output">
           <p class="codetitle"><span style='font-size:40px;'>&#128248;</span>Output :</p>
-          <img src="#" alt="output" />
+          <img src="mul9.png" alt="output" />
         </div>      </section>
   
 </main>

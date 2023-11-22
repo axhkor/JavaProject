@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://sgbrothers.github.io/javawebsite/multithreading/multithreading4.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://sgbrothers.github.io/javawebsite/images/small.png" type="image/x-icon">
+    <link rel="stylesheet" href="./mul4_files/style2.css">
+    <title>Code - Output</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="navconatiner">
+                <nav>
+                    <ul id="navlist">
+                        <li>
+                            <p><a>CODEWEB</a></p>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="https://sgbrothers.github.io/javawebsite/index.html" target="_blank">HOME</a>
+                                <a href="https://sgbrothers.github.io/javawebsite/php/introduction.html" target="_blank">PHP</a>
+                                <a href="https://sgbrothers.github.io/javawebsite/multithreading/multithreading4.html#one">CONTACT</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="display">
+                <div class="example">
+                    <div class="head">
+                        <h2>CODE</h2>
+                    </div>
+                   <p>
+                    class program4 {<br>
+                        public static void main(String[] args) {<br>
+                            int[][] matrixA = {<br>
+                                {1, 2, 3},<br>
+                                {4, 5, 6},<br>
+                                {7, 8, 9}<br>
+                            };<br>
+                    <br>
+                            int[][] matrixB = {<br>
+                                {9, 8, 7},<br>
+                                {6, 5, 4},<br>
+                                {3, 2, 1}<br>
+                            };<br>
+                    <br>
+                            int[][] result = multiplyMatrices(matrixA, matrixB);<br>
+                    <br>
+                            // Display the result matrix<br>
+                            System.out.println("Resultant Matrix:");<br>
+                            displayMatrix(result);<br>
+                        }<br>
+                    <br>
+                        public static int[][] multiplyMatrices(int[][] matrixA, int[][] matrixB) {<br>
+                            int rowsA = matrixA.length;<br>
+                            int columnsA = matrixA[0].length;<br>
+                            int columnsB = matrixB[0].length;<br>
+                    <br>
+                            int[][] result = new int[rowsA][columnsB];<br>
+                    <br>
+                            // Create threads to perform multiplication<br>
+                            Thread[][] threads = new Thread[rowsA][columnsB];<br>
+                    <br>
+                            for (int i = 0; i &lt; rowsA; i++) {<br>
+                                for (int j = 0; j &lt; columnsB; j++) {<br>
+                                    threads[i][j] = new Thread(new MultiplicationTask(matrixA, matrixB, result, i, j, columnsA));<br>
+                                    threads[i][j].start();<br>
+                                }<br>
+                            }<br>
+                    <br>
+                            // Wait for all threads to complete<br>
+                            for (int i = 0; i &lt; rowsA; i++) {<br>
+                                for (int j = 0; j &lt; columnsB; j++) {<br>
+                                    try {<br>
+                                        threads[i][j].join();<br>
+                                    } catch (InterruptedException e) {<br>
+                                        e.printStackTrace();<br>
+                                    }<br>
+                                }<br>
+                            }<br>
+                    <br>
+                            return result;<br>
+                        }<br>
+                    <br>
+                        public static void displayMatrix(int[][] matrix) {<br>
+                            for (int[] row : matrix) {<br>
+                                for (int element : row) {<br>
+                                    System.out.print(element + " ");<br>
+                                }<br>
+                                System.out.println();<br>
+                            }<br>
+                        }<br>
+                    }<br>
+                    <br>
+                    class MultiplicationTask implements Runnable {<br>
+                        private final int[][] matrixA;<br>
+                        private final int[][] matrixB;<br>
+                        private final int[][] result;<br>
+                        private final int row;<br>
+                        private final int column;<br>
+                        private final int columnsA;<br>
+                    <br>
+                        public MultiplicationTask(int[][] matrixA, int[][] matrixB, int[][] result, int row, int column, int columnsA) {<br>
+                            this.matrixA = matrixA;<br>
+                            this.matrixB = matrixB;<br>
+                            this.result = result;<br>
+                            this.row = row;<br>
+                            this.column = column;<br>
+                            this.columnsA = columnsA;<br>
+                        }<br>
+                    <br>
+                        public void run() {<br>
+                            int columnsB = matrixB[0].length;<br>
+                            int sum = 0;<br>
+                            for (int i = 0; i &lt; columnsA; i++) {<br>
+                                sum += matrixA[row][i] * matrixB[i][column];<br>
+                            }<br>
+                            result[row][column] = sum;<br>
+                        }<br>
+                    }<br>
+                    
+                   </p>
+                </div>
+                <div class="output">
+                    <div class="head">
+                        <h2>OUTPUT</h2>
+                    </div>
+                    <div class="image">
+                        <p>
+                            <img src="./mul4_files/pro4.png" alt="image" loading="lazy">
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="foot" id="one">
+                <div class="Copyright">
+                    <p>Copyright © CodeWeb 2023 All rights are Reserved </p>
+                </div>
+                <div class="contact">
+                    <div class="linkedin">
+                        <div class="left">
+                            <img src="./mul4_files/linkedin.jpg" alt="linkedin_image" loading="lazy">
+                        </div>
+                        <div class="right">
+                            <p><a href="https://www.linkedin.com/in/sourav-kumar-61362821a/" target="_blank">LinkedIn</a></p>
+                        </div>
+                    </div>
+                    <div class="linkedin">
+                        <div class="left">
+                            <img src="./mul4_files/gmail.png" alt="Gmail_image" loading="lazy">
+                        </div>
+                        <div class="right">
+                            <p><a href="mailto:sk2856150@gmail.com" target="_blank">Email</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    </div></body></html>
